@@ -1,0 +1,48 @@
+
+title: "Psicóloga — Site Profissional"
+description: "Atendimento psicológico online e presencial com acolhimento e ética."
+lang: "pt-BR"
+baseurl: "" # deixe vazio para Pages na raiz
+url: ""     # será preenchido pelo GitHub Pages automaticamente
+timezone: America/Sao_Paulo
+
+# Variáveis de conveniência (edite aqui!)
+whatsapp_number: "+55 11 90000-0000"
+whatsapp_text: "Olá, gostaria de agendar uma sessão."
+consultorio_endereco: "Rua Exemplo, 123 — Bairro, Cidade — SP"
+crp: "CRP 00/000000"
+calendly_url: "https://calendly.com/seu-usuario/consulta"
+email_contato: "contato@seudominio.com.br"
+maps_embed: "https://www.google.com/maps/embed?pb=..."
+
+# Coleções (conteúdo fácil de editar em Markdown)
+collections:
+  servicos:
+    output: true
+    permalink: /servicos/:name/
+  faq:
+    output: false
+  depoimentos:
+    output: false
+
+# Plugins suportados pelo GitHub Pages
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Inclusão de navegação
+nav:
+  - title: "Início"
+    url: "/"
+  - title: "Serviços"
+    url: "/servicos/"
+  - title: "Como funciona"
+    url: "/como-funciona/"
+  - title: "Sinais de alerta"
+    url: "/sinais-de-alerta/"
+  - title: "Depoimentos"
+    url: "/depoimentos/"
+  - title: "FAQ"
+    url: "/faq/"
+  - title: "Contato"
+    url: "/contato/"
