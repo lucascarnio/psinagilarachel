@@ -1,12 +1,14 @@
-
 title: "Psicóloga — Site Profissional"
 description: "Atendimento psicológico online e presencial com acolhimento e ética."
 lang: "pt-BR"
-baseurl: "" # deixe vazio para Pages na raiz
-url: ""     # será preenchido pelo GitHub Pages automaticamente
+
+# 👇 MUITO IMPORTANTE para GitHub Pages de PROJETO:
+url: "https://lucascarnio.github.io"   # domínio do usuário
+baseurl: "/psinagilarachel"            # nome EXATO do repositório
+
 timezone: America/Sao_Paulo
 
-# Variáveis de conveniência (edite aqui!)
+# Variáveis de conveniência (opcional)
 whatsapp_number: "+55 11 90000-0000"
 whatsapp_text: "Olá, gostaria de agendar uma sessão."
 consultorio_endereco: "Rua Exemplo, 123 — Bairro, Cidade — SP"
@@ -15,7 +17,7 @@ calendly_url: "https://calendly.com/seu-usuario/consulta"
 email_contato: "contato@seudominio.com.br"
 maps_embed: "https://www.google.com/maps/embed?pb=..."
 
-# Coleções (conteúdo fácil de editar em Markdown)
+# Coleções (se você usa)
 collections:
   servicos:
     output: true
@@ -30,7 +32,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# Inclusão de navegação
+# Navegação (opcional, caso o seu layout use)
 nav:
   - title: "Início"
     url: "/"
