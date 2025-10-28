@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "{{ site.title | escape }}",
+      "address": "{{ site.consultorio_endereco | escape }}",
+      "areaServed": "Brasil",
+      "telephone": "{{ site.whatsapp_number | escape }}",
+      "email": "{{ site.email_contato | escape }}",
+      "url": "{{ site.url }}{{ site.baseurl }}",
+      "image": "{{ site.url }}{{ site.baseurl }}/assets/hero.jpg"
+    }
+    </script>
+  </head>
+  <body>
+    {% include nav.html %}
+    <main class="container">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+    {% include whatsapp-float.html %}
+  </body>
+</html>
