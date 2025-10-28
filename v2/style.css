@@ -1,13 +1,15 @@
 
 :root{
-  --bg: #FBF8F6; /* warm beige */
+  /* Slightly darker overall theme */
+  --bg: #F4F1EF; /* deeper warm beige */
   --card: #FFFFFF;
-  --text: #2b2b2b;
-  --muted: #6b6b6b;
+  --text: #222222;
+  --muted: #5f5f5f;
   --accent: #8B5E83; /* mauve accent */
-  --accent-dark: #6e4663;
-  --line: #E8E2E6;
-  --shadow: 0 10px 30px rgba(43,43,43,0.06);
+  --accent-dark: #6e4663; /* used for solid menu */
+  --menu: #5d3a53; /* solid navbar color (a hair darker) */
+  --line: #DDD6DC;
+  --shadow: 0 12px 34px rgba(43,43,43,0.08);
   --radius: 12px;
   --maxw: 1120px;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -19,16 +21,19 @@ body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--bg
 .container{width:min(var(--maxw),92%);margin:0 auto}
 
 /* Header */
-.header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--line);z-index:60}
+.header{position:sticky;top:0;background:var(--menu);border-bottom:0;z-index:60}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px}
-.brand{font-family:var(--font-serif);font-weight:600;color:var(--accent);text-decoration:none;font-size:1.15rem}
+.brand{font-family:var(--font-serif);font-weight:600;color:#fff;text-decoration:none;font-size:1.15rem}
 .nav-links{display:flex;gap:14px;align-items:center}
-.nav-links a{color:var(--text);text-decoration:none;font-weight:600}
-.nav-links .cta{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none}
+.nav-links a{color:#f7f4f6;text-decoration:none;font-weight:600;opacity:.9}
+.nav-links a:hover,.nav-links a:focus{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.nav-links .cta{background:#fff;color:var(--menu);padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700}
+/* Keep CTA readable on dark menu */
+.nav-links .cta:hover,.nav-links .cta:focus{background:#f3ecf1}
 
 /* Mobile */
-.nav-toggle{display:none;background:transparent;border:0;font-size:18px;cursor:pointer}
-@media(max-width:900px){.nav-toggle{display:block}.nav-links{display:none}.nav-links.show{display:flex;flex-direction:column;background:var(--card);position:absolute;right:16px;top:64px;padding:12px;border-radius:8px;box-shadow:var(--shadow)}}
+.nav-toggle{display:none;background:transparent;border:0;font-size:18px;cursor:pointer;color:#fff}
+@media(max-width:900px){.nav-toggle{display:block}.nav-links{display:none}.nav-links.show{display:flex;flex-direction:column;background:var(--menu);position:absolute;right:16px;top:64px;padding:12px;border-radius:8px;box-shadow:var(--shadow)} .nav-links.show a{color:#fff}}
 
 /* Hero */
 .hero{padding:72px 0 48px}
@@ -63,8 +68,31 @@ h2{font-family:var(--font-serif);color:var(--accent-dark);margin:0 0 12px}
 .portrait-small{width:100%;border-radius:12px;box-shadow:var(--shadow)}
 
 /* Footer */
-.footer{padding:28px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
+.footer{padding:28px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);background:#faf6f8}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* Active link underline (persist after click) */
+/* Works when you add .active or aria-current to the current link */
+.nav-links a.active,
+.nav-links a[aria-current="page"],
+.nav-links a[aria-current="true"]{
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+  opacity:1;
+}
+
+/* Anchor sections: underline based on :target for your exact IDs */
+body:has(#home:target) .nav-links a[href="#home"],
+body:has(#areas:target) .nav-links a[href="#areas"],
+body:has(#sobre:target) .nav-links a[href="#sobre"],
+body:has(#conteudos:target) .nav-links a[href="#conteudos"],
+body:has(#contato:target) .nav-links a[href="#contato"]{
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+  opacity:1;
+}
 
 /* Responsive */
 @media(max-width:1100px){.hero-grid{grid-template-columns:1fr 380px}}
