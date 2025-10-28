@@ -4,12 +4,53 @@
   const toggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const header = document.querySelector('.header');
+  const nav = document.querySelector('.header .nav');
+  const brand = document.querySelector('.brand');
 
   if (toggle){
     toggle.addEventListener('click', ()=>{
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
       navLinks.classList.toggle('show');
     });
   }
+
+  // Collapse menu only when it doesn't fit
+  const measureNeededWidth = () => {
+    if (!nav || !navLinks) return 0;
+    // Clone links to measure natural width without layout side-effects
+    const clone = navLinks.cloneNode(true);
+    clone.classList.remove('show');
+    clone.style.cssText = 'position:absolute;visibility:hidden;display:flex;white-space:nowrap;gap:22px;';
+    nav.appendChild(clone);
+    const linksWidth = clone.scrollWidth;
+    nav.removeChild(clone);
+    const brandWidth = brand ? brand.offsetWidth : 0;
+    const padding = 48; // breathing room
+    return brandWidth + linksWidth + padding;
+  };
+
+  const updateMenuMode = () => {
+    if (!header || !nav || !navLinks) return;
+    const available = nav.clientWidth;
+    const needed = measureNeededWidth();
+    const shouldCollapse = needed > available;
+    header.classList.toggle('nav-collapsed', shouldCollapse);
+    if (!shouldCollapse) {
+      // Ensure menu is visible inline and toggle state reset
+      navLinks.classList.remove('show');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  const debounce = (fn, delay=120) => {
+    let t; return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
+  };
+
+  window.addEventListener('resize', debounce(updateMenuMode, 100));
+  window.addEventListener('orientationchange', updateMenuMode);
+  window.addEventListener('load', updateMenuMode);
+  updateMenuMode();
 
   // Smooth scroll with offset for sticky header
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
