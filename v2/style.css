@@ -50,15 +50,12 @@ body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--bg
 /* Hero */
 .hero{
   padding:72px 0 48px;
-  /* Background: photo on the left fading to the site menu color on right */
+  /* Subtle light gradient only on the first 20% from top */
   background:
-    linear-gradient(90deg, transparent 45%, var(--menu) 75%),
-    url('assets/profissional_main_blur.jpg');
-  background-size: cover, cover;
-  background-position: left center, left center;
-  background-repeat: no-repeat, no-repeat;
+    linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.00) 20%),
+    var(--menu);
 }
-.hero-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center}
 .hero-left h1{font-family:var(--font-serif);font-size:2.2rem;margin:0 0 12px;color:var(--heading)}
 .lead{color:var(--muted);margin:0 0 18px}
 .badges{display:flex;gap:10px;list-style:none;padding:0;margin-top:12px;color:var(--muted)}
@@ -135,6 +132,6 @@ body:has(#contato:target) .nav-links a[href="#contato"]{
 }
 
 /* Responsive */
-@media(max-width:1100px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.hero-grid{grid-template-columns:1fr 380px}}
 @media(max-width:900px){.grid-areas{grid-template-columns:repeat(2,1fr)}.grid-posts{grid-template-columns:1fr} .hero-grid{grid-template-columns:1fr;gap:20px}.hero .portrait{aspect-ratio:3/4}.about-grid{grid-template-columns:1fr} .contact-grid{grid-template-columns:1fr} .footer-inner{flex-direction:column} .section{padding:56px 0}}
 
