@@ -15,6 +15,8 @@
   --heading: #2b1917;      /* titles */
   --accent: #7a2e36;       /* bordeaux */
   --accent-dark: #803841;  /* deeper bordeaux */
+  --menu-border: #6d2830;  /* slightly darker than WhatsApp/CTA button */
+  --menu-border-weak: rgba(109,40,48,0.35); /* subtle hairline */
   --shadow: 0 12px 34px rgba(43,43,43,0.07);
   --radius: 12px;
   --maxw: 1120px;
@@ -27,7 +29,7 @@ body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--bg
 .container{width:min(var(--maxw),92%);margin:0 auto}
 
 /* Header */
-.header{position:sticky;top:0;background:var(--menu);border-bottom:1px solid var(--line);z-index:60}
+.header{position:sticky;top:0;background:var(--menu);border-bottom:0.5px solid var(--menu-border-weak);z-index:60}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px}
 .brand{font-family:var(--font-serif);font-weight:600;color:var(--accent-dark);text-decoration:none;font-size:1.15rem}
 .nav-links{display:flex;gap:22px;align-items:center}
