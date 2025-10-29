@@ -19,17 +19,35 @@
 
   // Colors panel toggle
   if (colorsToggle && colorsPanel){
-    colorsToggle.addEventListener('click', ()=>{
+    const showPanel = () => {
+      colorsToggle.setAttribute('aria-expanded','true');
+      colorsPanel.classList.add('open');
+      colorsPanel.removeAttribute('hidden');
+    };
+    const hidePanel = () => {
+      colorsToggle.setAttribute('aria-expanded','false');
+      colorsPanel.classList.remove('open');
+      setTimeout(()=>colorsPanel.setAttribute('hidden',''), 200);
+    };
+    colorsToggle.addEventListener('click', (e)=>{
+      e.preventDefault();
       const expanded = colorsToggle.getAttribute('aria-expanded') === 'true';
-      const next = !expanded;
-      colorsToggle.setAttribute('aria-expanded', String(next));
-      if (next) {
-        colorsPanel.removeAttribute('hidden');
-      } else {
-        colorsPanel.setAttribute('hidden','');
-      }
+      expanded ? hidePanel() : showPanel();
+    });
+    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') hidePanel(); });
+    document.addEventListener('click', (e)=>{
+      if (!colorsPanel.contains(e.target) && e.target !== colorsToggle) hidePanel();
     });
   }
+
+  // Keep header height var updated for panel position
+  const setHeaderVar = () => {
+    const h = header ? header.offsetHeight : 64;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  };
+  window.addEventListener('resize', setHeaderVar);
+  window.addEventListener('load', setHeaderVar);
+  setHeaderVar();
 
   // Collapse menu only when it doesn't fit
   const measureNeededWidth = () => {
