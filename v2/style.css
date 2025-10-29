@@ -498,11 +498,40 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 
 /* Mobile: apply the same inner padding for these sections */
 @media (max-width: 900px) {
+
   #sobre .container,
   #conteudos .container,
   #contato .container {
     padding-top: 0;
     padding-bottom: 10px;
+  }
+}
+
+/* Minha história: comportamento distinto para mobile e desktop */
+@media (max-width: 900px) {
+
+  /* Fundo da seção já é var(--bg-alt); reforça no bloco da imagem */
+  #sobre .about-image {
+    background: var(--bg-alt);
+  }
+
+  /* Foto à esquerda com fade para o fundo à direita (sem bordas/sombra) */
+  #sobre .about-image img {
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
+    background: var(--bg-alt);
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 901px) {
+
+  /* Desktop: foto sem degradê, com o mesmo fundo da seção */
+  #sobre .about-image img {
+    -webkit-mask-image: none;
+    mask-image: none;
+    background: var(--bg-alt);
   }
 }
 
