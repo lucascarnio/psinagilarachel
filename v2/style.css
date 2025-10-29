@@ -487,3 +487,32 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
     margin-top: 16px;
   }
 }
+
+/* Minor inner padding for sections (except Home and Área de Atuação) */
+#sobre .container,
+#conteudos .container,
+#contato .container {
+  padding-top: 0;
+  padding-bottom: 12px;
+}
+
+/* Mobile: apply the same inner padding for these sections */
+@media (max-width: 900px) {
+  #sobre .container,
+  #conteudos .container,
+  #contato .container {
+    padding-top: 0;
+    padding-bottom: 10px;
+  }
+}
+
+/* Extra gap at end of "Área de Atuação" */
+#areas.section {
+  padding-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  #areas.section {
+    padding-bottom: 66px;
+  }
+}
