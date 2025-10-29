@@ -68,6 +68,15 @@ h2{font-family:var(--font-serif);color:var(--accent-dark);margin:0 0 12px}
 h2{color:var(--heading)}
 .sub{color:var(--muted);margin:0 0 18px}
 
+/* Section-specific backgrounds (palette mapping) */
+#areas.section{background:var(--bg-variant)}
+#sobre.section{background:var(--bg-alt)}
+#conteudos.section{background:var(--bg-intermediate)}
+#contato.section{background:var(--bg-soft)}
+
+/* Optional subtle separators between sections */
+.section + .section{border-top:1px solid var(--line)}
+
 /* Areas grid */
 .grid-areas{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .area{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--line);text-align:left}
