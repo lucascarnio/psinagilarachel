@@ -16,7 +16,7 @@
   --accent: #7a2e36;       /* bordeaux */
   --accent-dark: #803841;  /* deeper bordeaux */
   --menu-border: #6d2830;  /* slightly darker than WhatsApp/CTA button */
-  --menu-border-weak: rgba(109,40,48,0.35); /* subtle hairline */
+  --menu-border-weak: rgba(122,46,54,0.12); /* lighter, more subtle */
   --shadow: 0 12px 34px rgba(43,43,43,0.07);
   --radius: 12px;
   --maxw: 1120px;
@@ -35,8 +35,8 @@ body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--bg
 .nav-links{display:flex;gap:22px;align-items:center}
 .nav-links a{color:var(--text);text-decoration:none;font-weight:500;opacity:.95}
 .nav-links a:hover,.nav-links a:focus{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1.5px}
-.nav-links .cta{background:linear-gradient(135deg,var(--accent) 0%, var(--accent-dark) 100%);color:#fff;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid rgba(0,0,0,0.05);box-shadow: 0 4px 14px rgba(122,46,54,0.15)}
-.nav-links .cta:hover,.nav-links .cta:focus{filter:brightness(1.02);box-shadow: 0 8px 22px rgba(122,46,54,0.22)}
+.nav-links .cta{background:linear-gradient(135deg,var(--accent) 0%, var(--accent-dark) 100%);color:#fff;padding:6px 12px;border-radius:999px;text-decoration:none;font-weight:600;border:1px solid rgba(0,0,0,0.05);box-shadow: 0 2px 8px rgba(122,46,54,0.12); line-height:1}
+.nav-links .cta:hover,.nav-links .cta:focus{filter:brightness(1.02);box-shadow: 0 4px 14px rgba(122,46,54,0.18)}
 
 /* Colors tester removed */
 
