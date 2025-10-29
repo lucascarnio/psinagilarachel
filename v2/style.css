@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   /* Palette aligned to provided image */
   --white: #ffffff;
   --on-dark: #fefefd;
@@ -488,7 +488,7 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
   }
 }
 
-/* Minor inner padding for sections (except Home and Área de Atuação) */
+/* Minor inner padding for sections (except Home and Ãrea de AtuaÃ§Ã£o) */
 #sobre .container,
 #conteudos .container,
 #contato .container {
@@ -507,15 +507,15 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
   }
 }
 
-/* Minha história: comportamento distinto para mobile e desktop */
+/* Minha histÃ³ria: comportamento distinto para mobile e desktop */
 @media (max-width: 900px) {
 
-  /* Fundo da seção já é var(--bg-alt); reforça no bloco da imagem */
+  /* Fundo da seÃ§Ã£o jÃ¡ Ã© var(--bg-alt); reforÃ§a no bloco da imagem */
   #sobre .about-image {
     background: var(--bg-alt);
   }
 
-  /* Foto à esquerda com fade para o fundo à direita (sem bordas/sombra) */
+  /* Foto Ã  esquerda com fade para o fundo Ã  direita (sem bordas/sombra) */
   #sobre .about-image img {
     -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
@@ -527,7 +527,7 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 
 @media (min-width: 901px) {
 
-  /* Desktop: foto sem degradê, com o mesmo fundo da seção */
+  /* Desktop: foto sem degradÃª, com o mesmo fundo da seÃ§Ã£o */
   #sobre .about-image img {
     -webkit-mask-image: none;
     mask-image: none;
@@ -535,7 +535,7 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
   }
 }
 
-/* Extra gap at end of "Área de Atuação" */
+/* Extra gap at end of "Ãrea de AtuaÃ§Ã£o" */
 #areas.section {
   padding-bottom: 12px;
 }
@@ -543,5 +543,29 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 @media (max-width: 900px) {
   #areas.section {
     padding-bottom: 66px;
+  }
+}
+/* Minha história: garantir que a imagem apareça inteira e com fundo */
+#sobre .about-image { background: var(--bg-alt); }
+#sobre .about-image img { object-fit: contain; background: var(--bg-alt); }
+
+/* Mobile: degradê entre a foto (esquerda) e o fundo (direita) */
+@media (max-width: 900px) {
+  #sobre .about-image img {
+    -webkit-mask-image: linear-gradient(90deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 100%);
+    mask-image: linear-gradient(90deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 100%);
+  }
+}
+
+/* Desktop: sem degradê na foto */
+@media (min-width: 901px) {
+  #sobre .about-image img { -webkit-mask-image: none; mask-image: none; }
+}
+
+
+@media (min-width: 901px) {
+  #sobre .about-image img {
+    -webkit-mask-image: linear-gradient(90deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 100%);
+    mask-image: linear-gradient(90deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 100%);
   }
 }
