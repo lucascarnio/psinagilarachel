@@ -58,11 +58,18 @@ body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--bg
 @media(max-width:700px){.colors-grid{grid-template-columns:repeat(2, minmax(150px,1fr))}}
 
 /* Hero */
-.hero{padding:72px 0 48px}
+.hero{
+  padding:72px 0 48px;
+  /* Subtle light gradient only on the first 20% from top */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.00) 20%),
+    var(--menu);
+}
 .hero-grid{display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center}
-.hero-left h1{font-family:var(--font-serif);font-size:2.2rem;margin:0 0 12px;color:var(--accent-dark)}
-.lead{color:var(--muted);margin:0 0 18px}
-.badges{display:flex;gap:10px;list-style:none;padding:0;margin-top:12px;color:var(--muted)}
+.hero-left h1{font-family:var(--font-serif);font-size:2.2rem;margin:0 0 12px;color:#fff}
+.lead{color:#f7eef5;margin:0 0 18px}
+.badges{display:flex;gap:10px;list-style:none;padding:0;margin-top:12px;color:#f0e6ee}
+.hero a{color:#ffffff}
 .portrait{width:100%;aspect-ratio:4/5;height:auto;border-radius:16px;box-shadow:var(--shadow);border:6px solid #fff;object-fit:cover;object-position:center}
 
 /* Sections */
