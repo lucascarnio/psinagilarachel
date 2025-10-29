@@ -160,61 +160,21 @@ body {
 
 /* Hero */
 .hero {
-  padding: 180px 0 48px;
-  /* mantém o mesmo tamanho */
-  /* Esquerda com a cor do fundo; direita com a foto em degradê */
-  background:
-    linear-gradient(90deg, var(--menu) 0%, var(--menu) 45%, rgba(246, 231, 225, 0) 65%),
-    url('assets/profissional_main_blur.jpg');
-  background-size: cover, cover;
-  background-position: right center, right center;
-  background-repeat: no-repeat, no-repeat;
+  padding: 72px 0 48px; /* mant�m o mesmo tamanho */
+  background: var(--menu);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 460px;
+  gap: 36px;
   align-items: center
 }
 
-.hero-left h1 {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  margin: 0 0 12px;
-  color: var(--heading)
-}
+.hero-right{ display:flex; align-items:center; justify-content:center }
+.hero-right .portrait{ width:100%; height:auto; max-height:420px; object-fit:contain; aspect-ratio:auto }
 
-.lead {
-  color: var(--muted);
-  margin: 0 0 18px
-}
 
-.badges {
-  display: flex;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin-top: 12px;
-  color: var(--muted)
-}
-
-.hero a {
-  color: inherit
-}
-
-.portrait {
-  width: 100%;
-  aspect-ratio: 4/5;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  border: 6px solid #fff;
-  object-fit: cover;
-  object-position: center
-}
-
-/* Sections */
 .section {
   padding: 72px 0
 }
@@ -429,6 +389,8 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 }
 
 @media(max-width:900px) {
+  .hero-right .portrait { aspect-ratio:auto; object-fit:contain; max-height:none; }
+
   .grid-areas {
     grid-template-columns: repeat(2, 1fr)
   }
@@ -446,6 +408,7 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
     aspect-ratio: 3/4
   }
 
+  .hero-right .portrait { aspect-ratio:auto; object-fit:contain; }
   .about-grid {
     grid-template-columns: 1fr
   }
@@ -462,3 +425,4 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
     padding: 56px 0
   }
 }
+
