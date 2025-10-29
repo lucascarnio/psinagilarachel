@@ -6,12 +6,28 @@
   const header = document.querySelector('.header');
   const nav = document.querySelector('.header .nav');
   const brand = document.querySelector('.brand');
+  const colorsToggle = document.querySelector('.colors-toggle');
+  const colorsPanel = document.getElementById('colors-panel');
 
   if (toggle){
     toggle.addEventListener('click', ()=>{
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       navLinks.classList.toggle('show');
+    });
+  }
+
+  // Colors panel toggle
+  if (colorsToggle && colorsPanel){
+    colorsToggle.addEventListener('click', ()=>{
+      const expanded = colorsToggle.getAttribute('aria-expanded') === 'true';
+      const next = !expanded;
+      colorsToggle.setAttribute('aria-expanded', String(next));
+      if (next) {
+        colorsPanel.removeAttribute('hidden');
+      } else {
+        colorsPanel.setAttribute('hidden','');
+      }
     });
   }
 
@@ -131,5 +147,155 @@
   if (location.hash) {
     const link = idToLink.get(decodeURIComponent(location.hash.slice(1)));
     if (link) setActive(link);
+  }
+})();
+
+// Color utilities and live theming
+(function(){
+  const root = document.documentElement;
+  const qs = (sel) => document.querySelector(sel);
+  const qsa = (sel) => Array.from(document.querySelectorAll(sel));
+
+  const defaults = {
+    '--bg': getVar('--bg'),
+    '--card': getVar('--card'),
+    '--text': getVar('--text'),
+    '--muted': getVar('--muted'),
+    '--accent': getVar('--accent'),
+    '--accent-dark': getVar('--accent-dark'),
+    '--menu': getVar('--menu'),
+    '--line': getVar('--line'),
+  };
+
+  function getVar(name){
+    const v = getComputedStyle(root).getPropertyValue(name).trim();
+    return rgbToHex(v) || v;
+  }
+  function setVar(name, value){ root.style.setProperty(name, value); }
+
+  // Conversions
+  function rgbToHex(rgb){
+    if (!rgb) return '';
+    const m = rgb.match(/rgba?\(([^)]+)\)/);
+    if (!m) return rgb.startsWith('#') ? rgb : '';
+    const parts = m[1].split(',').map(s=>parseFloat(s));
+    const [r,g,b] = parts;
+    const toHex = (n)=>('0'+Math.round(n).toString(16)).slice(-2);
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+  function hexToHsl(hex){
+    hex = hex.replace('#','');
+    if (hex.length===3) hex = hex.split('').map(c=>c+c).join('');
+    const r = parseInt(hex.slice(0,2),16)/255;
+    const g = parseInt(hex.slice(2,4),16)/255;
+    const b = parseInt(hex.slice(4,6),16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let h,s,l = (max+min)/2;
+    if (max===min){ h=s=0; }
+    else {
+      const d = max-min;
+      s = l>0.5 ? d/(2-max-min) : d/(max+min);
+      switch(max){
+        case r: h=(g-b)/d + (g<b?6:0); break;
+        case g: h=(b-r)/d + 2; break;
+        case b: h=(r-g)/d + 4; break;
+      }
+      h/=6;
+    }
+    return {h:safe(h*360), s:safe(s*100), l:safe(l*100)};
+  }
+  function hslToHex(h,s,l){
+    h/=360; s/=100; l/=100;
+    function hue2rgb(p, q, t){
+      if (t<0) t+=1; if (t>1) t-=1;
+      if (t<1/6) return p + (q-p)*6*t;
+      if (t<1/2) return q;
+      if (t<2/3) return p + (q-p)*(2/3 - t)*6;
+      return p;
+    }
+    let r,g,b;
+    if (s===0){ r=g=b=l; }
+    else {
+      const q = l < .5 ? l * (1 + s) : l + s - l*s;
+      const p = 2 * l - q;
+      r = hue2rgb(p,q,h+1/3);
+      g = hue2rgb(p,q,h);
+      b = hue2rgb(p,q,h-1/3);
+    }
+    const toHex = v => ('0'+Math.round(v*255).toString(16)).slice(-2);
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+  const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
+  const safe = (v)=>Math.round(clamp(v,0,100));
+
+  function lighten(hex, amt){ const {h,s,l}=hexToHsl(hex); return hslToHex(h,s,clamp(l+amt,0,100)); }
+  function darken(hex, amt){ const {h,s,l}=hexToHsl(hex); return hslToHex(h,s,clamp(l-amt,0,100)); }
+  function desat(hex, amt){ const {h,s,l}=hexToHsl(hex); return hslToHex(h,clamp(s-amt,0,100),l); }
+
+  // Apply overrides from storage
+  const KEY = 'v2-palette';
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY)||'null');
+    if (saved) Object.entries(saved).forEach(([k,v])=>setVar(k,v));
+  } catch {}
+
+  // Bind inputs
+  const map = {
+    '--bg': qs('#color-bg'),
+    '--card': qs('#color-card'),
+    '--text': qs('#color-text'),
+    '--muted': qs('#color-muted'),
+    '--accent': qs('#color-accent'),
+    '--accent-dark': qs('#color-accent-dark'),
+    '--menu': qs('#color-menu'),
+    '--line': qs('#color-line'),
+  };
+
+  // Init inputs with current values
+  Object.entries(map).forEach(([k,el])=>{ if (el) el.value = getVar(k); });
+  const themeInput = qs('#color-theme'); if (themeInput && !themeInput.value) themeInput.value = getVar('--accent');
+
+  function save(){
+    const palette = {};
+    Object.keys(map).forEach(k => palette[k] = getVar(k));
+    localStorage.setItem(KEY, JSON.stringify(palette));
+  }
+
+  // Update single var
+  qsa('.colors-form input[type="color"][data-var]').forEach(input => {
+    input.addEventListener('input', (e)=>{
+      const name = input.getAttribute('data-var');
+      const val = input.value;
+      setVar(name, val);
+      save();
+    });
+  });
+
+  // Generate palette from one color
+  if (themeInput){
+    themeInput.addEventListener('input', ()=>{
+      const base = themeInput.value || getVar('--accent');
+      const accent = base;
+      const accentDark = darken(base, 15);
+      const menu = darken(base, 25);
+      const bg = lighten(desat(base, 60), 70); // very light wash
+      const card = '#ffffff';
+      const text = darken(desat(base, 70), 65);
+      const muted = darken(desat(base, 70), 45);
+      const line = lighten(desat(base, 70), 85);
+      const next = { '--bg': bg, '--card': card, '--text': text, '--muted': muted, '--accent': accent, '--accent-dark': accentDark, '--menu': menu, '--line': line };
+      Object.entries(next).forEach(([k,v])=>{ setVar(k,v); if (map[k]) map[k].value = v; });
+      save();
+    });
+  }
+
+  // Reset button
+  const resetBtn = document.querySelector('.btn-reset');
+  if (resetBtn){
+    resetBtn.addEventListener('click', ()=>{
+      Object.entries(defaults).forEach(([k,v])=>{ setVar(k,v); if (map[k]) map[k].value = v; });
+      localStorage.removeItem(KEY);
+      if (themeInput) themeInput.value = getVar('--accent');
+    });
   }
 })();
