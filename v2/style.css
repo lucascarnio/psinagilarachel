@@ -66,40 +66,38 @@
   --font-serif: 'Playfair Display', serif;
   --- END ORIGINAL COLORS --- */
 
-  /* --- NEW PALETTE ---
-     #FFEFCD  site background
-     #A58E74  sections background + WhatsApp/CTA buttons
-     #5b6042  section highlights and other accents
+  /* --- NEW PALETTE (refinada/mais clara)
+     Referências: #FFEFCD / #A58E74 / #5B6042
   */
   --white: #ffffff;
   --on-dark: #fefefd;
-  --bg: #d5c1aa;
-  /* site background */
-  --bg-variant: #FBE9BE;
-  /* slight variant of bg */
-  --bg-alt: #5B6042;
-  /* sections background */
-  --bg-soft: #A58E74;
-  /* soft alt for content areas */
-  --bg-intermediate: #5B6042;
-  /* between sections */
-  --card: #d5c1aa;
-  /* cards on light bg */
-  --menu: #5B6042;
-  /* header/hero/footer base */
-  --line: #cca87f;
-  /* subtle separators on light bg */
+  --bg: #FFF6E6;
+  /* site background (mais claro que #FFEFCD) */
+  --bg-variant: #FFF1DA;
+  /* variação sutil do fundo */
+  --bg-alt: #CFC0AE;
+  /* fundo de seções (mais claro que #A58E74) */
+  --bg-soft: #FFF2E6;
+  /* áreas suaves sobre o fundo */
+  --bg-intermediate: #FAF0DE;
+  /* entre seções */
+  --card: #FFFAF0;
+  /* cartões sobre fundo claro */
+  --menu: #CFC0AE;
+  /* header/hero/footer base (claro) */
+  --line: #EADFCB;
+  /* divisórias discretas quentes */
   --text: #2f2b24;
-  /* readable dark text */
+  /* texto principal */
   --heading: #2b2a1f;
-  /* titles */
-  --accent: #5b6042;
-  /* highlights */
-  --accent-dark: #A58E74;
-  /* keep same for solid look */
-  --menu-border: #A58E74;
-  /* borders near menu */
-  --menu-border-weak: rgba(91, 96, 66, 0.12);
+  /* títulos */
+  --accent: #828A69;
+  /* destaques (mais claro que #5B6042) */
+  --accent-dark: #747B5F;
+  /* leve contraste ao accent */
+  --menu-border: #BDAF9D;
+  /* bordas próximas ao menu */
+  --menu-border-weak: rgba(130, 138, 105, 0.12);
   --shadow: 0 12px 34px rgba(43, 43, 43, 0.07);
   --radius: 12px;
   --maxw: 1120px;
@@ -185,7 +183,7 @@ body {
   /* border: 1px solid rgba(0, 0, 0, 0.05); */
   border: 1px solid rgba(0, 0, 0, 0.05);
   /* box-shadow: 0 2px 8px rgba(122, 46, 54, 0.12); */
-  box-shadow: 0 2px 8px rgba(91, 96, 66, 0.12);
+  box-shadow: 0 2px 8px rgba(130, 138, 105, 0.12);
   line-height: 1
 }
 
@@ -193,7 +191,7 @@ body {
 .nav-links .cta:focus {
   filter: brightness(1.02);
   /* box-shadow: 0 4px 14px rgba(122, 46, 54, 0.18) */
-  box-shadow: 0 4px 14px rgba(91, 96, 66, 0.18)
+  box-shadow: 0 4px 14px rgba(130, 138, 105, 0.18)
 }
 
 /* Colors tester removed */
@@ -300,8 +298,17 @@ h2 {
 }
 
 #contato.section {
+  /* Fundo suavizado e harmônico (sem tinte esverdeado) */
   background: var(--bg-soft)
 }
+
+/*
+  Anterior (removido por feedback): ajustes de cor esverdeados
+  #contato.section,
+  #contato.section p,
+  #contato.section li { color: #4A513D }
+  #contato.section h2 { color: var(--accent-dark) }
+*/
 
 /* Optional subtle separators between sections */
 .section+.section {
@@ -394,14 +401,14 @@ h2 {
   /* color: #fff; */
   color: #fff;
   /* box-shadow: 0 6px 18px rgba(122, 46, 54, 0.18) */
-  box-shadow: 0 6px 18px rgba(91, 96, 66, 0.18)
+  box-shadow: 0 6px 18px rgba(130, 138, 105, 0.18)
 }
 
 .btn.primary:hover,
 .btn.primary:focus {
   filter: brightness(1.02);
   /* box-shadow: 0 10px 26px rgba(122, 46, 54, 0.26); */
-  box-shadow: 0 10px 26px rgba(91, 96, 66, 0.26);
+  box-shadow: 0 10px 26px rgba(130, 138, 105, 0.26);
   transform: translateY(-1px)
 }
 
@@ -413,13 +420,13 @@ h2 {
   background: transparent;
   color: var(--accent-dark);
   /* border-color: rgba(122, 46, 54, 0.35) */
-  border-color: rgba(91, 96, 66, 0.35)
+  border-color: rgba(130, 138, 105, 0.35)
 }
 
 .btn.ghost:hover,
 .btn.ghost:focus {
   /* background: rgba(122, 46, 54, 0.06) */
-  background: rgba(91, 96, 66, 0.06)
+  background: rgba(130, 138, 105, 0.06)
 }
 
 /* Contact */
