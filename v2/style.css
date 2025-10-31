@@ -512,7 +512,12 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 
   /* Fundo da seÃ§Ã£o jÃ¡ Ã© var(--bg-alt); reforÃ§a no bloco da imagem */
   #sobre .about-image {
-    width: 100%; aspect-ratio: 4/3; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; background: var(--bg-alt);
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    background: var(--bg-alt);
   }
 
   /* Foto Ã  esquerda com fade para o fundo Ã  direita (sem bordas/sombra) */
@@ -548,7 +553,12 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 
 /* Minha história: garantir que a imagem apareça inteira e com fundo */
 #sobre .about-image {
-  width: 100%; aspect-ratio: 4/3; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; background: var(--bg-alt);
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--bg-alt);
 }
 
 #sobre .about-image img {
@@ -582,7 +592,12 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 
 /* Minha história: mobile sem degradê; desktop com degradê invertido (imagem à esquerda) */
 #sobre .about-image {
-  width: 100%; aspect-ratio: 4/3; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; background: var(--bg-alt);
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--bg-alt);
 }
 
 @media (max-width: 900px) {
@@ -603,26 +618,48 @@ body:has(#contato:target) .nav-links a[href="#contato"] {
 @media (min-width: 901px) {
   #sobre .about-image {
     /* image on the left, fading into the section background to the right */
-    width: 100%; aspect-ratio: 4/3; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; background:
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    background:
       linear-gradient(90deg, rgba(246, 230, 224, 0) 60%, var(--bg-alt) 100%),
       url('assets/profissional_consult.jpg');
     background-size: cover, cover;
     background-position: left center, left center;
     background-repeat: no-repeat, no-repeat;
   }
-  #sobre .about-image img { display: none !important; }
+
+  #sobre .about-image img {
+    display: none !important;
+  }
 }
 
 @media (max-width: 900px) {
+
   /* mobile: show the image element and keep solid background, no fade */
-  #sobre .about-image { width: 100%; aspect-ratio: 4/3; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; background: var(--bg-alt); }
-  #sobre .about-image img { display: block !important; width: 100%; height: auto; object-fit: contain; }
+  #sobre .about-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    background: var(--bg-alt);
+  }
+
+  #sobre .about-image img {
+    display: block !important;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
-/* Contato: foto � direita com degrad� para a esquerda (desktop) */
-@media(min-width:901px){
-  #contato .portrait-small{
-    -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+/* Contato: foto � direita com degrad� para a esquerda (desktop) */
+@media(min-width:901px) {
+  #contato .portrait-small {
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 18%, rgba(0, 0, 0, 1) 100%);
   }
 }
