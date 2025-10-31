@@ -157,11 +157,27 @@ p {
   padding: 0;
   width: min(520px, 84%);
 }
-.hero-nav .menu-logo { padding: 22px 0; display:block; }
-.hero-nav .menu-logo picture { display:block; }
-.hero-nav .menu-logo-img { display:block; margin:0 auto; width: clamp(42px, 9vw, 84px); height:auto; }
-@media (max-width: 480px){
-  .hero-nav .menu-logo-img { width: clamp(33px, 12vw, 48px); }
+
+.hero-nav .menu-logo {
+  padding: 22px 0;
+  display: block;
+}
+
+.hero-nav .menu-logo picture {
+  display: block;
+}
+
+.hero-nav .menu-logo-img {
+  display: block;
+  margin: 0 auto;
+  width: clamp(55px, 11.7vw, 96px);
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .hero-nav .menu-logo-img {
+    width: clamp(49px, 18vw, 72px);
+  }
 }
 
 .hero-nav li {
