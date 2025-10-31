@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+<rect width="100%" height="100%" fill="#fff5f0"/>
+<g transform="translate(80.0,60.0)">
+  <ellipse cx="320.0" cy="280.0" rx="176.0" ry="140.0" fill="#f7eef2"/>
+  <rect x="0" y="420.0" width="640.0" height="450.0" rx="24" fill="#fff"/>
+  <circle cx="320.0" cy="260.0" r="96.0" fill="#f0e6ea" stroke="#8B5E83" stroke-width="6"/>
+  <text x="320.0" y="900.0" font-family="Inter, Arial" font-size="28" text-anchor="middle" fill="#8B5E83">Profissional de Psicologia</text>
+</g>
+</svg>
