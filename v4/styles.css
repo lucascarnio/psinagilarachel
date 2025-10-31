@@ -157,6 +157,9 @@ p {
   padding: 0;
   width: min(520px, 84%);
 }
+.hero-nav .menu-logo { padding: 22px 0; display:block; }
+.hero-nav .menu-logo picture { display:block; }
+.hero-nav .menu-logo-img { display:block; margin:0 auto; width: clamp(48px, 8vw, 96px); height:auto; }
 
 .hero-nav li {
   padding: 18px 0;
@@ -165,6 +168,12 @@ p {
 
 .hero-nav li:first-child {
   border-top: 1px solid rgba(255, 255, 255, .18)
+}
+
+/* Remove top separator/space above the logo item */
+.hero-nav li.menu-logo {
+  border-top: 0;
+  padding: 0 0 18px;
 }
 
 .hero-nav a {
