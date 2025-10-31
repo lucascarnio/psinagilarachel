@@ -111,11 +111,11 @@ p {
 }
 
 .mark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: conic-gradient(from 90deg, var(--ink) 0 25%, transparent 0 100%),
-    radial-gradient(circle at 70% 50%, var(--accent) 0 2px, transparent 3px);
+  width: clamp(40px, 6vw, 72px);
+  height: clamp(40px, 6vw, 72px);
+  border-radius: 12px;
+  background: center/contain no-repeat url('assets/images/logo.jpg');
+  background-color: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, .08) inset, 0 1px 0 #fff inset;
 }
 
